@@ -3,10 +3,18 @@ Changelog
 
 Release 1.7
 -----------
+:released: 02.12.2025
 
-* **Bugfix** [#82] TOC Tree Fix and Page Break Handling for document handling
+* **Bugfix**: Replace deprecated `pkg_resources` with `importlib.metadata` for Python 3.12+ compatibility.
+* **Bugfix** [#116] Prettify breaks HTML formatting.
+* **Bugfix** [#82] TOC Tree Fix and Page Break Handling for document handling.
 * **Bugfix** [#70] Added config option to build PDFs retries times if weasyprint binary fails to build.
+* **Bugfix** [#66] Remove 'display: inline-block' from inline code blocks.
 * **Enhancement** [#40] Added config option to filter warnings from weasyprint.
+* **Enhancement** [#8] Latex equations rendered in demo.
+* **Enhancement**: Add support for section and figure numbers.
+* **Enhancement**: Add duplicate headline fix for toctree.
+* **Enhancement**: Add duplicate check to toctree_fix function.
 
 Release 1.6
 -----------
