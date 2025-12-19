@@ -1,8 +1,7 @@
-import logging
-
 from docutils import nodes
 from docutils.nodes import Element
 from sphinx.locale import __
+from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
 
 logger = logging.getLogger(__name__)
