@@ -1,10 +1,10 @@
-import sys
 import pkgutil
-from importlib.metadata import version, PackageNotFoundError
 import platform
+import sys
+from importlib.metadata import PackageNotFoundError, version
+
 
 class DebugPython:
-
     @property
     def py_exec(self):
         return sys.executable
@@ -19,7 +19,7 @@ class DebugPython:
             try:
                 pkg_version = version(name)
             except PackageNotFoundError:
-                final[name] = 'unknown'
+                final[name] = "unknown"
             else:
                 final[name] = pkg_version
 
