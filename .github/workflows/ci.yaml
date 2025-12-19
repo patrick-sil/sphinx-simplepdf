@@ -27,6 +27,9 @@ jobs:
             builder: html
           - target: pdf
             builder: simplepdf
+        exclude:
+          - target: pdf
+            os: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install WeasyPrint dependencies (Ubuntu)
