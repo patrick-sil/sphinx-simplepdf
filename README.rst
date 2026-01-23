@@ -1,7 +1,7 @@
 Sphinx-SimplePDF
 ================
 
-A Sphinx extension to build easily PDFs from a Sphinx project.
+A Sphinx extension to easily build PDFs from a Sphinx project.
 
 For more details, please read the documentation under https://sphinx-simplepdf.readthedocs.io
 
