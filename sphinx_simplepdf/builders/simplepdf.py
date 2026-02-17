@@ -170,6 +170,28 @@ class SimplePdfBuilder(SingleFileHTMLBuilder):
                         raise RuntimeError(f"maximum number of retries {retries} failed in weasyprint")
 
     """
+    Fixes a link that refers to a sub-headline.
+
+    For instance the broken link:
+        #headline#sub-headline#sub-sub-headline
+    Will be fixed to:
+        #sub-sub-headline
+
+    If the link is not a sub-headline, the link isn't modified
+
+    Args:
+        link_to_fix: The link to fix
+
+    Returns: If no modification is needed, link_to_fix otherwise the fixed link
+    """
+    def fix_link(self, link_to_fix):
+        pos = link_to_fix.rfind("#")
+        if pos != -1:
+            # In case we only find one #, this will still work as it won't affect the link
+            link_to_fix = link_to_fix [pos::]
+        return link_to_fix
+
+    """
     attempts to fix cases where a document has multiple chapters that have the same name.
 
     the following structure would be a problem for showing the toc correctly:
@@ -218,6 +240,8 @@ class SimplePdfBuilder(SingleFileHTMLBuilder):
             # remove document file reference
             for toc_link in toc_links:
                 toc_link["href"] = toc_link["href"].replace(f"{self.app.config.root_doc}.html", "")
+                # In case we link to a sub-heading, fix the link, if it doesn't need fixing, nothing is done
+                toc_link["href"] = self.fix_link(toc_link["href"])
 
             # search for duplicates
             counts = dict(Counter([str(x).split(">")[0] for x in toc_links]))
